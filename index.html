@@ -277,21 +277,21 @@
             <div class="row">
              <div class="desc col-md-6">
                <h1 class="title-left">Contact Me</h1><br>
-            <form action="mailto:kmsuhail56@gmail.com" method="post" name="myForm">
+            <form action=""  name="gform" id="submit-form">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Your name" id="name">
+                <input type="text" class="form-control" placeholder="Your name" id="name" name="name" required>
                 <div class="error" id="nameErr"></div>
               </div><br>
               <div class="form-group">
-                <input type="email" class="form-control" placeholder="Your email" id="email">
+                <input type="email" class="form-control" placeholder="Your email" id="email" name="email" required>
                 <div class="error" id="emailErr"></div>
               </div><br>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Subject" id="subject">
+                <input type="text" class="form-control" placeholder="Subject" id="subject" name="subject" required>
                 <div class="error" id="subErr"></div>
               </div><br>
               <div class="form-group">
-                <textarea class="form-control" id="message" placeholder="Message" rows="5"></textarea>
+                <textarea class="form-control" id="message" placeholder="Message" rows="5" name="Message" required></textarea>
                 <div class="error" id="messErr"></div>
               </div><br>
               <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
@@ -336,6 +336,25 @@
       $(".navbar-collapse").collapse('hide');
       });
     </script>
+      <script>
+     $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycby7FeuXhBGO81D6K8brDRAoepoppMhy-2Z8z20naWqp7UDBR9WQfaLYpw/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+  </script>
 
 </body>
 </html>
